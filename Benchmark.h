@@ -6,24 +6,30 @@
 #include "Task.h"
 
 class Benchmark {
-    std::unordered_map<unsigned long long, Task> dataset;
-    unsigned long long counter = 0;
+    std::unordered_map<long int, Task> dataset;
+    long int counter = 0;
     // default values for data generation
-    unsigned long long datasetSize = 100000;
+    long int datasetMaxSize = 100000;
     int datasetType = 0;    // 0 is random, 1 is ascending, 2 is descending
     bool verbosity = false;
     bool timerOn = false;
-    auto maxHeapTime = std::chrono::duration<long long, std::chrono::nanoseconds>(0);
-    auto pairHeapTime = std::chrono::duration<long long, std::chrono::nanoseconds>(0);
+    auto maxHeapTime = std::chrono::duration<long int, std::chrono::nanoseconds>(0);
+    auto pairHeapTime = std::chrono::duration<long int, std::chrono::nanoseconds>(0);
 
 public:
-    void generateTasks();
-    void insertTasks();
+    bool checkSpace(long int number);
+    void generateTasks(long int number);
+    void generateTasks(long int priority, std::string& name);
     void removeTasks();
-    void setSize(unsigned long long size) : datasetSize(size) {}
+    void setSize(long int size) : datasetMaxSize(size) {}
     void setType(int type) : datasetType(type) {}
     void setVerbosity(bool verbosity) : verbosity(verbosity) {}
     void setTimer(bool timer) : timerOn(timer) {}
+    long int getSize() { return datasetMaxSize;}
+    long int getType() { return datasetType; }
+    bool getVerbosity() { return verbosity; }
+    bool getTimer() { return timerOn; }
+    long int getDataSize() { return static_cast<long int>(dataset.size()); }
 };
 
 
