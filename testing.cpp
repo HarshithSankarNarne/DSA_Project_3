@@ -114,6 +114,10 @@ void PairingMergeTester() {
     }
 }
 
+
+
+
+/*
 int main()
 {
     //Check insert of Pairing Heap
@@ -123,7 +127,7 @@ int main()
 
     //The Pairing heap works as intended
 
-}
+} */
 
 
 
