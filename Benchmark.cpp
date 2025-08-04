@@ -104,10 +104,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count())<< " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -135,10 +135,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -172,10 +172,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -200,10 +200,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -250,10 +250,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -281,10 +281,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -318,10 +318,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -347,10 +347,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n";
             if (maxInsertTime < pairingInsertTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime > pairingInsertTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxInsertTime == pairingInsertTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -391,10 +391,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n";
             if (maxRemoveTime < pairingRemoveTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime > pairingRemoveTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime == pairingRemoveTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -426,10 +426,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n";
             if (maxRemoveTime < pairingRemoveTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime > pairingRemoveTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime == pairingRemoveTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -465,10 +465,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n";
             if (maxRemoveTime < pairingRemoveTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime > pairingRemoveTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime == pairingRemoveTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -498,10 +498,10 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n";
             if (maxRemoveTime < pairingRemoveTime) {
-                cout << "Max Heap performed better than Pairing Heap for this operation\n";
+                cout << "Max Heap performed better than Pairing Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime > pairingRemoveTime) {
-                cout << "Pairing Heap performed better than Max Heap for this operation\n";
+                cout << "Pairing Heap performed better than Max Heap for this operation\n" << std::endl;
             }
             else if (maxRemoveTime == pairingRemoveTime) {
                 cout << "Both heaps executed at the same time for this operation\n" << std::endl;
@@ -610,10 +610,10 @@ std::string Benchmark::getType() {
 void Benchmark::printCurrentTime() {
     std::cout << "Current time:\nMaxHeap completed in " + std::to_string(getMaxHeapTime()) + " nanoseconds.\nPairing Heap completed in " + std::to_string(getPairHeapTime()) + " nanoseconds.\n";
     if (getMaxHeapTime() < getPairHeapTime()) {
-        cout << "Max Heap performed better than Pairing Heap up to now\n";
+        cout << "Max Heap performed better than Pairing Heap up to now\n" << endl;
     }
     else if (getMaxHeapTime() > getPairHeapTime()) {
-        cout << "Pairing Heap performed better than Max Heap up to now\n";
+        cout << "Pairing Heap performed better than Max Heap up to now\n" << endl;
     }
     else if (getMaxHeapTime() == getPairHeapTime()) {
         cout << "Both heaps executed at the same time up to now\n" << endl;
