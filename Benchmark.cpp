@@ -63,13 +63,15 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
     }
     else if (datasetType == 1) {    // ascending
         for (long int i = 0; i < number; i++) {
-            dataset[IDCounter] = Task(IDCounter, counter, "Dummy Task " + std::to_string(IDCounter));
+            long int taskPriority = minPriority + i < maxPriority ? minPriority + i : maxPriority;
+            dataset[IDCounter] = Task(IDCounter, taskPriority, "Dummy Task " + std::to_string(IDCounter));
             counter++; IDCounter++;
         }
     }
     else if (datasetType == 2) {    // descending
         for (long int i = 0; i < number; i++) {
-            dataset[IDCounter] = Task(IDCounter, counter + number - i - 1, "Dummy Task " + std::to_string(IDCounter));
+            long int taskPriority = maxPriority - i > minPriority ? maxPriority - i : minPriority;
+            dataset[IDCounter] = Task(IDCounter, taskPriority, "Dummy Task " + std::to_string(IDCounter));
             counter++; IDCounter++;
         }
     }
@@ -90,8 +92,8 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
             maxHeapTime += maxInsertTime;
             pairHeapTime += pairingInsertTime;
-            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setw(50) << "Name" << " |\n";
-            std::cout << std::setfill('-') << std::setw(80) << "\n";
+            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setfill(' ') << std::setw(50) << "Name" << " |\n";
+            std::cout << std::setfill('-') << std::setw(80) << "" << "\n";
             for (long int i = IDCounter - number; i < IDCounter; i++) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
@@ -140,8 +142,8 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
-            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setw(50) << "Name" << " |\n";
-            std::cout << std::setfill('-') << std::setw(80) << "\n";
+            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setfill(' ') << std::setw(50) << "Name" << " |\n";
+            std::cout << std::setfill('-') << std::setw(80) << "" << "\n";
             for (long int i = IDCounter - number; i < IDCounter; i++) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
@@ -201,8 +203,8 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
             maxHeapTime += maxInsertTime;
             pairHeapTime += pairingInsertTime;
-            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setw(50) << "Name" << " |\n";
-            std::cout << std::setfill('-') << std::setw(80) << "\n";
+            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setfill(' ') << std::setw(50) << "Name" << " |\n";
+            std::cout << std::setfill('-') << std::setw(80) << "" << "\n";
             for (long int i = IDCounter - number; i < IDCounter; i++) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
@@ -251,8 +253,8 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
-            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setw(50) << "Name" << " |\n";
-            std::cout << std::setfill('-') << std::setw(80) << "\n";
+            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setfill(' ') << std::setw(50) << "Name" << " |\n";
+            std::cout << std::setfill('-') << std::setw(80) << "" << "\n";
             for (long int i = IDCounter - number; i < IDCounter; i++) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
@@ -292,8 +294,8 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
         if (verbosity) {            // timer on, verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
             std::chrono::duration<unsigned long long, std::nano> pairingRemoveTime(0);
-            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setw(50) << "Name" << " |\n";
-            std::cout << std::setfill('-') << std::setw(80) << "\n";
+            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setfill(' ') << std::setw(50) << "Name" << " |\n";
+            std::cout << std::setfill('-') << std::setw(80) << "" << "\n";
             for (long int i = 0; i < number; i++) {
                 deletedTasks.push_back(maxHeap.peek().ID);
                 auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -350,8 +352,8 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
         if (verbosity) {            // timer off, verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
             std::chrono::duration<unsigned long long, std::nano> pairingRemoveTime(0);
-            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setw(50) << "Name" << " |\n";
-            std::cout << std::setfill('-') << std::setw(80) << "\n";
+            std::cout << "| " << "    ID    " << " | " << " Priority " << " | " << std::left << std::setfill(' ') << std::setw(50) << "Name" << " |\n";
+            std::cout << std::setfill('-') << std::setw(80) << "" << "\n";
             for (long int i = 0; i < number; i++) {
                 deletedTasks.push_back(maxHeap.peek().ID);
                 auto maxStartTime = std::chrono::high_resolution_clock::now();
