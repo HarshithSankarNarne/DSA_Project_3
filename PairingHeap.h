@@ -34,6 +34,11 @@ private:
 
 public:
 
+    Node* assignroot(Node* node)
+    {
+        root = node;
+    }
+
     void insert(int ID, int priority, std::string name)
     {
         Node* newNode = new Node(ID, priority, name);
