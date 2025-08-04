@@ -5,9 +5,9 @@ int getInput(int low, int high);
 
 int main()
 {
-    std::string welcomeScreen = "Priority Task Manager\n1. Simulate\n2. Options\n3. Exit\n" << std::endl;
-    std::string simulationMenu = "Simulation\n1. Quick Simulation\n2. Start/Stop timer\n3. Print current time\n4. Save data to CSV file\n5. Reset dataset\n6. Reset time\n7. Add tasks\n8. Remove top tasks\n9. Back to menu\n0. Print this menu again\n" << std::endl;
-    std::string optionsMenu = "Options\n1. Adjust dataset size (0-10000000) [default: 100000]\n2. Adjust dataset type (Random, Ascending, Descending) [default: Random]\n3. Set verbosity (Verbose: slow, prints each operation to screen; Non-Verbose: fast, only returns time to complete) [default: Non-Verbose]\n4. Adjust priority range [default: 0-100000]\n5. Back to menu\n0. Print this menu again\n" << std::endl;
+    std::string welcomeScreen = "Priority Task Manager\n1. Simulate\n2. Options\n3. Exit\n";
+    std::string simulationMenu = "Simulation\n1. Quick Simulation\n2. Start/Stop timer\n3. Print current time\n4. Save data to CSV file\n5. Reset dataset\n6. Reset time\n7. Add tasks\n8. Remove top tasks\n9. Back to menu\n0. Print this menu again\n";
+    std::string optionsMenu = "Options\n1. Adjust dataset size (0-10000000) [default: 100000]\n2. Adjust dataset type (Random, Ascending, Descending) [default: Random]\n3. Set verbosity (Verbose: slow, prints each operation to screen; Non-Verbose: fast, only returns time to complete) [default: Non-Verbose]\n4. Adjust priority range [default: 0-100000]\n5. Back to menu\n0. Print this menu again\n";
     int screen = 0;             // 0 for welcome screen, 1 for simulation menu, 2 for options menu
     bool seenMenu = false;      // avoids repeating printing the current menu
     Benchmark benchmark;
@@ -16,7 +16,7 @@ int main()
     while (true) {
         if (screen == 0) {          // welcome menu
             if (!seenMenu) {
-                std::cout << welcomeScreen;
+                std::cout << welcomeScreen << std::endl;
                 seenMenu = true;
             }
             int choice = getInput(0, 3);
@@ -39,7 +39,7 @@ int main()
 
         else if (screen == 1) {     // simulation menu
             if (!seenMenu) {
-                std::cout << simulationMenu;
+                std::cout << simulationMenu << endl;
                 seenMenu = true;
             }
             int choice = getInput(0, 9);
@@ -189,7 +189,7 @@ int main()
 
         else if (screen == 2) {
             if (!seenMenu) {
-                std::cout << optionsMenu;
+                std::cout << optionsMenu << endl;
                 seenMenu = true;
             }
             int choice = getInput(0, 4);
