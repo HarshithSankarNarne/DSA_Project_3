@@ -63,7 +63,7 @@ int main()
                     auto maxPostRemoveTime = outPair.first;
                     auto pairingPostRemoveTime = outPair.second;
                     std::string timerValue = benchmark.getTimer() ? "Timer ON" : "Timer OFF";
-                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:\tinsertion " + std::to_string(maxPostInsertTime.count()) + " ns, deletion " + std::to_string(maxPostRemoveTime.count()) + " ns, sum " + std::to_string(maxPostInsertTime.count() + maxPostRemoveTime.count()) + "\nPairing Heap:\tinsertion " + std::to_string(pairingPostInsertTime.count()) + " ns, deletion " + std::to_string(pairingPostRemoveTime.count()) + " ns, sum " + std::to_string(pairingPostInsertTime.count() + pairingPostRemoveTime.count()) + " ns\n" << std::endl;
+                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:\t\tinsertion " + std::to_string(maxPostInsertTime.count()) + " ns, deletion " + std::to_string(maxPostRemoveTime.count()) + " ns, sum " + std::to_string(maxPostInsertTime.count() + maxPostRemoveTime.count()) + " ns\nPairing Heap:\tinsertion " + std::to_string(pairingPostInsertTime.count()) + " ns, deletion " + std::to_string(pairingPostRemoveTime.count()) + " ns, sum " + std::to_string(pairingPostInsertTime.count() + pairingPostRemoveTime.count()) + " ns\n" << std::endl;
                     seenMenu = false;
                 }
             }
@@ -110,7 +110,7 @@ int main()
                     std::cout << "Save to CSV cancelled.\n" << std::endl;
                 }
                 else if (selection == 1) {
-
+                    benchmark.writeCSV();
                 }
             }
             else if (choice == 5) {     // reset dataset

@@ -431,7 +431,7 @@ void Benchmark::writeCSV() {
     auto timeNow = std::time(nullptr);
     auto timeLocal = *std::localtime(&timeNow);
     std::ostringstream timeStream;
-    timeStream << std::put_time(&timeLocal, "%Y-%m-%d %H:%M:%S");
+    timeStream << std::put_time(&timeLocal, "%Y-%m-%d-%H-%M-%S");
     std::string timeString = timeStream.str();
     std::ofstream outFile("log-" + timeString + ".csv");
     if (!outFile.is_open()) {
