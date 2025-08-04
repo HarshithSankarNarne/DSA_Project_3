@@ -10,7 +10,7 @@ class MaxHeap{
     //Priority is at the top
     //Large number on top
 private:
-    int size=0; //getting passed in by Parham in Main.cpp
+    //int size=0; //getting passed in by Parham in Main.cpp
     //We need to create an array
     vector<Task> heap;
 
