@@ -98,8 +98,8 @@ void Benchmark::generateTasks(long int number) {
             std::cout << std::endl;
             CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count())<< " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
         else {                      // timer on, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
