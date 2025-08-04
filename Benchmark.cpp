@@ -63,13 +63,15 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
     }
     else if (datasetType == 1) {    // ascending
         for (long int i = 0; i < number; i++) {
-            dataset[IDCounter] = Task(IDCounter, counter, "Dummy Task " + std::to_string(IDCounter));
+            long int taskPriority = minPriority + i < maxPriority ? minPriority + i : maxPriority;
+            dataset[IDCounter] = Task(IDCounter, taskPriority, "Dummy Task " + std::to_string(IDCounter));
             counter++; IDCounter++;
         }
     }
     else if (datasetType == 2) {    // descending
         for (long int i = 0; i < number; i++) {
-            dataset[IDCounter] = Task(IDCounter, counter + number - i - 1, "Dummy Task " + std::to_string(IDCounter));
+            long int taskPriority = maxPriority - i > minPriority ? maxPriority - i : minPriority;
+            dataset[IDCounter] = Task(IDCounter, taskPriority, "Dummy Task " + std::to_string(IDCounter));
             counter++; IDCounter++;
         }
     }
