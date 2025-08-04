@@ -79,6 +79,9 @@ public:
         root = nullptr;
     }
 
+
+    //I got this code from my own Project 1, I submitted in class
+    //Full credit to Harshith Sankar Narne DSA Project 1
     void deleteEntireHeap(Node* node)
     {
         if (node == nullptr)
