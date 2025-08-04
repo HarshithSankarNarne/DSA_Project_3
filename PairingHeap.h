@@ -9,8 +9,10 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
-#include <Task.h>
+
+#include <"Task.h">
 
 
 
@@ -210,7 +212,7 @@ public:
 
     void clear()
     {
-        deleteHeap(root);
+        deleteEntireHeap(root);
         root = nullptr;
     }
 
@@ -227,9 +229,10 @@ public:
 
 
 
+
     ~PairingHeap()
     {
-        deleteHeap(root);
+        clear();
     }
 
 
