@@ -50,7 +50,7 @@ std::string Benchmark::getString(std::string& info, long int low, long int high)
 }
 
 
-void Benchmark::generateTasks(long int number) {
+std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>> Benchmark::generateTasks(long int number) {
     // create the task objects and prepare them for adding
     if (datasetType == 0) {         // random
         std::random_device rd;
@@ -101,6 +101,7 @@ void Benchmark::generateTasks(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count())<< " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer on, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -122,6 +123,7 @@ void Benchmark::generateTasks(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
     }
     else {
@@ -149,6 +151,7 @@ void Benchmark::generateTasks(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer off, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -168,11 +171,12 @@ void Benchmark::generateTasks(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
     }
 }
 
-void Benchmark::generateTasksManual(long int number) {
+std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>> Benchmark::generateTasksManual(long int number) {
     std::cout << "Manual Task Entry: Enter the priority and name for each task you wish to add.\nPriority: May range from " + std::to_string(minPriority) + " (lowest priority) to " + std::to_string(maxPriority) + " (highest priority)\nName: May range from " + std::to_string(MIN_STRING_LENGTH) + " to " + std::to_string(MAX_STRING_LENGTH) + " characters\n";
     for (long int i = 0; i < number; i++) {
         std::string priorityInfo = "Enter Task ID " + std::to_string(IDCounter) + "'s Priority (" + std::to_string(minPriority) + "-" + std::to_string(maxPriority) + "): ";
@@ -208,6 +212,7 @@ void Benchmark::generateTasksManual(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer on, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -229,6 +234,7 @@ void Benchmark::generateTasksManual(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
     }
     else {
@@ -256,6 +262,7 @@ void Benchmark::generateTasksManual(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer off, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -275,11 +282,12 @@ void Benchmark::generateTasksManual(long int number) {
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
         }
     }
 }
 
-void Benchmark::removeTasks(long int number) {
+std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>> Benchmark::removeTasks(long int number) {
     if (timerOn) {
         if (verbosity) {            // timer on, verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
@@ -309,6 +317,7 @@ void Benchmark::removeTasks(long int number) {
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
         }
         else {                      // timer on, non-verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
@@ -334,6 +343,7 @@ void Benchmark::removeTasks(long int number) {
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
         }
     }
     else {
@@ -363,6 +373,7 @@ void Benchmark::removeTasks(long int number) {
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
         }
         else {                      // timer off, non-verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
@@ -386,6 +397,7 @@ void Benchmark::removeTasks(long int number) {
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
+            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
         }
     }
 }

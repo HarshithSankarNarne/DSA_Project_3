@@ -56,16 +56,14 @@ int main()
                         continue;
                     }
                     benchmark.printCurrentTime();
-                    unsigned long long maxStartTime = benchmark.getMaxHeapTime();
-                    unsigned long long pairingStartTime = benchmark.getPairHeapTime();
-                    benchmark.generateTasks(freeSpace);
-                    unsigned long long maxPostInsertTime = benchmark.getMaxHeapTime();
-                    unsigned long long pairingPostInsertTime = benchmark.getPairHeapTime();
-                    benchmark.removeTasks(freeSpace);
-                    unsigned long long maxPostRemoveTime = benchmark.getMaxHeapTime();
-                    unsigned long long pairingPostRemoveTime = benchmark.getPairHeapTime();
+                    auto inPair = benchmark.generateTasks(freeSpace);
+                    auto maxPostInsertTime = inPair.first;
+                    auto pairingPostInsertTime = inPair.second;
+                    auto outPair = benchmark.removeTasks(freeSpace);
+                    auto maxPostRemoveTime = outPair.first;
+                    auto pairingPostRemoveTime = outPair.second;
                     std::string timerValue = benchmark.getTimer() ? "Timer ON" : "Timer OFF";
-                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:\tinsertion " + std::to_string(maxPostInsertTime - maxStartTime) + " ns, deletion " + std::to_string(maxPostRemoveTime - maxPostInsertTime) + " ns, sum " + std::to_string(maxPostRemoveTime - maxStartTime) + "\nPairing Heap:\tinsertion " + std::to_string(pairingPostInsertTime - pairingStartTime) + " ns, deletion " + std::to_string(pairingPostRemoveTime - pairingPostInsertTime) + " ns, sum " + std::to_string(pairingPostRemoveTime - pairingStartTime) + "\n" << std::endl;
+                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:\tinsertion " + std::to_string(maxPostInsertTime.count()) + " ns, deletion " + std::to_string(maxPostRemoveTime.count()) + " ns, sum " + std::to_string(maxPostInsertTime.count() + maxPostRemoveTime.count()) + "\nPairing Heap:\tinsertion " + std::to_string(pairingPostInsertTime.count()) + " ns, deletion " + std::to_string(pairingPostRemoveTime.count()) + " ns, sum " + std::to_string(pairingPostInsertTime.count() + pairingPostRemoveTime.count()) + " ns\n" << std::endl;
                     seenMenu = false;
                 }
             }

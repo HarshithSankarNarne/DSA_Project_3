@@ -35,9 +35,9 @@ class Benchmark {
 public:
     static long int getNumber(std::string& info, long int low, long int high);
     static std::string getString(std::string& info, long int low, long int high);
-    void generateTasks(long int number);
-    void generateTasksManual(long int number);
-    void removeTasks(long int number);
+    std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>> generateTasks(long int number);
+    std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>> generateTasksManual(long int number);
+    std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>> removeTasks(long int number);
     void resetTime();
     void resetDataset();
     void writeCSV();
