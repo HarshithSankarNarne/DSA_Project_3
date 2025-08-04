@@ -581,15 +581,15 @@ std::string Benchmark::getType() {
 }
 
 void Benchmark::printCurrentTime() {
-    std::cout << "Current time:\nMaxHeap completed in " + std::to_string(getMaxHeapTime()) + " nanoseconds.\nPairing Heap completed in " + std::to_string(getPairHeapTime()) + " nanoseconds.\n" << std::endl;
+    std::cout << "Current time:\nMaxHeap completed in " + std::to_string(getMaxHeapTime()) + " nanoseconds.\nPairing Heap completed in " + std::to_string(getPairHeapTime()) + " nanoseconds.\n";
     if (getMaxHeapTime() > getPairHeapTime())
     {
-        cout << "Max Heap performed better than Pairing Heap" << endl;
+        cout << "Max Heap performed better than Pairing Heap up to now\n";
     } else if (getMaxHeapTime() < getPairHeapTime())
     {
-        cout << "Pairing Heap performed better than Max Heap" << endl;
+        cout << "Pairing Heap performed better than Max Heap up to now\n";
     } else if (getMaxHeapTime() == getPairHeapTime())
     {
-        cout << "Both heaps executed at the same time " << endl;
+        cout << "Both heaps executed at the same time up to now\n" << endl;
     }
 }
