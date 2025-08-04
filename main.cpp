@@ -6,8 +6,8 @@ int getInput(int low, int high);
 int main()
 {
     std::string welcomeScreen = "Priority Task Manager\n1. Simulate\n2. Options\n3. Exit\n" << std::endl;
-    std::string simulationMenu = "Simulation\n1. Quick Simulation\n2. Begin timer\n3. Stop timer\n4. Print current total time\n5. Reset dataset\n6. Reset time\n7. Add tasks\n8. Remove top tasks\n9. Back to menu\n0. Print this menu again\n" << std::endl;
-    std::string optionsMenu = "Options\n1. Adjust dataset size (0-10000000) [default: 100000]\n2. Adjust dataset type (Random, Ascending, Descending) [default: Random]\n3. Set verbosity (Verbose: slow, prints each operation to screen; Non-Verbose: fast, only returns time to complete) [default: Non-Verbose]\n4. Back to menu\n0. Print this menu again\n" << std::endl;
+    std::string simulationMenu = "Simulation\n1. Quick Simulation\n2. Start/Stop timer\n3. Print current time\n4. Save data to CSV file\n5. Reset dataset\n6. Reset time\n7. Add tasks\n8. Remove top tasks\n9. Back to menu\n0. Print this menu again\n" << std::endl;
+    std::string optionsMenu = "Options\n1. Adjust dataset size (0-10000000) [default: 100000]\n2. Adjust dataset type (Random, Ascending, Descending) [default: Random]\n3. Set verbosity (Verbose: slow, prints each operation to screen; Non-Verbose: fast, only returns time to complete) [default: Non-Verbose]\n4. Adjust priority range [default: 0-100000]\n5. Back to menu\n0. Print this menu again\n" << std::endl;
     int screen = 0;             // 0 for welcome screen, 1 for simulation menu, 2 for options menu
     bool seenMenu = false;      // avoids repeating printing the current menu
     Benchmark benchmark;
@@ -36,7 +36,7 @@ int main()
                 seenMenu = false;
             }
         }
-//TODO: complete simulation menu
+
         else if (screen == 1) {     // simulation menu
             if (!seenMenu) {
                 std::cout << simulationMenu;
@@ -105,7 +105,14 @@ int main()
                 }
             }
             else if (choice == 4) {     // print CSV file
+                std::cout << "Saves the data up until the last reset to a CSV file in the directory of this program.\n0 to cancel, 1 to continue\n" << std::endl;
+                int selection = getInput(0, 1);
+                if (selection == 0) {
+                    std::cout << "Save to CSV cancelled.\n" << std::endl;
+                }
+                else if (selection == 1) {
 
+                }
             }
             else if (choice == 5) {     // reset dataset
                 std::cout << "Reset the current dataset, with all tasks and timers, back to empty, with the presently selected options.\nNote: Differs from removing all tasks, as this operation will reset all unsaved log data and IDs for this run as well. Continue?\n0 to cancel, 1 to continue\n" << std::endl;
@@ -187,8 +194,8 @@ int main()
             }
             int choice = getInput(0, 4);
             if (choice == 1) {          // adjust dataset size
-                std::cout << "Adjust the maximum dataset size to a value between 0 and 10,000,000. Cannot be lower than the current number of tasks.\nCurrent tasks: " + std::to_string(benchmark.getDataSize()) + "\nCurrent max capacity: " + std::to_string(benchmark.getSize()) + "\n" << std::endl;
-                benchmark.setSize(getInput(benchmark.getDataSize(), 10000000));
+                std::cout << "Adjust the maximum dataset size to a value between 0 and " + std::to_string(benchmark.getMaxMaxDatasetSize()) + ". Cannot be lower than the current number of tasks.\nCurrent tasks: " + std::to_string(benchmark.getDataSize()) + "\nCurrent max capacity: " + std::to_string(benchmark.getSize()) + "\n" << std::endl;
+                benchmark.setSize(getInput(benchmark.getDataSize(), benchmark.getMaxMaxDatasetSize()));
             }
             else if (choice == 2) {     // adjust dataset type
                 std::string currentType = benchmark.getType();
@@ -206,7 +213,16 @@ int main()
                 std::cout << "Adjust the verbosity for operations done. Verbose operations will take more time but show the details for each task.\n0 for Non-Verbose, 1 for Verbose.\n Current verbosity: " + currentVerbosity + "\n" << std::endl;
                 benchmark.setVerbosity(getInput(0, 1));
             }
-            else if (choice == 4) {     // return to menu
+            else if (choice == 4) {     // adjust priority range
+                long int currentMinPriority = benchmark.getMinPriority();
+                long int currentMaxPriority = benchmark.getMaxPriority();
+                std::string minInfo = "Enter the minimum priority: ";
+                std::string maxInfo = "Enter the maximum priority: ";
+                std::cout << "Adjust the priority range to a range between " + std::to_string(benchmark.getMinMinPriority()) + " and " + std::to_string(benchmark.getMaxMaxPriority()) + ". Low cannot be higher than high, and vice versa.\nCurrent range: [" + std::to_string(currentMinPriority) + ", " + std::to_string(currentMaxPriority) + "]\n" << std::endl;
+                benchmark.setMinPriority(Benchmark::getNumber(minInfo, benchmark.getMinMinPriority(), benchmark.getMaxPriority()));
+                benchmark.setMaxPriority(Benchmark::getNumber(maxInfo, benchmark.getMinPriority(), benchmark.getMaxMaxPriority()));
+            }
+            else if (choice == 5) {     // return to menu
                 screen = 0;
                 seenMenu = false;
             }

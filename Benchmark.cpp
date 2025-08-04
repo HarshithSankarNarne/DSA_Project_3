@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iostream>
 #include <random>
+#include <fstream>
 
 long int Benchmark::getNumber(std::string& info, long int low, long int high) {
     std::string input;
@@ -52,7 +53,7 @@ void Benchmark::generateTasks(long int number) {
     if (datasetType == 0) {         // random
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<long int> dist(MIN_PRIORITY, MAX_PRIORITY);
+        std::uniform_int_distribution<long int> dist(minPriority, maxPriority);
         for (long int i = 0; i < number; i++) {
             dataset[IDCounter] = Task(IDCounter, dist(gen), "Dummy Task " + std::to_string(IDCounter));
             counter++; IDCounter++;
@@ -93,6 +94,7 @@ void Benchmark::generateTasks(long int number) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
             std::cout << std::endl;
+            CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -112,6 +114,7 @@ void Benchmark::generateTasks(long int number) {
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
             maxHeapTime += maxInsertTime;
             pairHeapTime += pairingInsertTime;
+            CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -137,6 +140,7 @@ void Benchmark::generateTasks(long int number) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
             std::cout << std::endl;
+            CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -154,6 +158,7 @@ void Benchmark::generateTasks(long int number) {
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
+            CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -162,11 +167,11 @@ void Benchmark::generateTasks(long int number) {
 }
 
 void Benchmark::generateTasksManual(long int number) {
-    std::cout << "Manual Task Entry: Enter the priority and name for each task you wish to add.\nPriority: May range from " + std::to_string(MIN_PRIORITY) + " (lowest priority) to " + std::to_string(MAX_PRIORITY) + " (highest priority)\nName: May range from " + std::to_string(MIN_STRING_LENGTH) + " to " + std::to_string(MAX_STRING_LENGTH) + " characters\n";
+    std::cout << "Manual Task Entry: Enter the priority and name for each task you wish to add.\nPriority: May range from " + std::to_string(minPriority) + " (lowest priority) to " + std::to_string(maxPriority) + " (highest priority)\nName: May range from " + std::to_string(MIN_STRING_LENGTH) + " to " + std::to_string(MAX_STRING_LENGTH) + " characters\n";
     for (long int i = 0; i < number; i++) {
-        std::string priorityInfo = "Enter Task ID " + std::to_string(IDCounter) + "'s Priority (" + std::to_string(MIN_PRIORITY) + "-" + std::to_string(MAX_PRIORITY) + "): ";
+        std::string priorityInfo = "Enter Task ID " + std::to_string(IDCounter) + "'s Priority (" + std::to_string(minPriority) + "-" + std::to_string(maxPriority) + "): ";
         std::string nameInfo = "Enter Task ID " + std::to_string(IDCounter) + "'s Name (" + std::to_string(MIN_STRING_LENGTH) + "-" + std::to_string(MAX_STRING_LENGTH) + " characters): ";
-        dataset[IDCounter] = Task(IDCounter, getNumber(priorityInfo, MIN_PRIORITY, MAX_PRIORITY), getString(nameInfo, MIN_STRING_LENGTH, MAX_STRING_LENGTH));
+        dataset[IDCounter] = Task(IDCounter, getNumber(priorityInfo, minPriority, maxPriority), getString(nameInfo, MIN_STRING_LENGTH, MAX_STRING_LENGTH));
         counter++; IDCounter++;
     }
 
@@ -192,6 +197,7 @@ void Benchmark::generateTasksManual(long int number) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
             std::cout << std::endl;
+            CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -211,6 +217,7 @@ void Benchmark::generateTasksManual(long int number) {
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
             maxHeapTime += maxInsertTime;
             pairHeapTime += pairingInsertTime;
+            CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -236,6 +243,7 @@ void Benchmark::generateTasksManual(long int number) {
                 std::cout << "| " << std::right << std::setw(10) << dataset[i].ID << " | " << std::right << std::setw(10) << dataset[i].priority << " | " << std::left << std::setw(50) << dataset[i].name << " |\n";
             }
             std::cout << std::endl;
+            CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -253,6 +261,7 @@ void Benchmark::generateTasksManual(long int number) {
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
+            CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
             std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
@@ -284,6 +293,7 @@ void Benchmark::removeTasks(long int number) {
             std::cout << std::endl;
             maxHeapTime += maxRemoveTime;
             pairHeapTime += pairingRemoveTime;
+            CSVData.emplace_back(std::vector<std::string>({"remove", std::to_string(number), std::to_string(timerOn), std::to_string(maxRemoveTime.count()), std::to_string(pairingRemoveTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + maxRemoveTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingRemoveTime.count() << " nanoseconds\n" << std::endl;
@@ -306,6 +316,7 @@ void Benchmark::removeTasks(long int number) {
             }
             maxHeapTime += maxRemoveTime;
             pairHeapTime += pairingRemoveTime;
+            CSVData.emplace_back(std::vector<std::string>({"remove", std::to_string(number), std::to_string(timerOn), std::to_string(maxRemoveTime.count()), std::to_string(pairingRemoveTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + maxRemoveTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingRemoveTime.count() << " nanoseconds\n" << std::endl;
@@ -332,6 +343,7 @@ void Benchmark::removeTasks(long int number) {
                 std::cout << "| " << std::right << std::setw(10) << extracted.ID << " | " << std::right << std::setw(10) << extracted.priority << " | " << std::left << std::setw(50) << extracted.name << " |\n";
             }
             std::cout << std::endl;
+            CSVData.emplace_back(std::vector<std::string>({"remove", std::to_string(number), std::to_string(timerOn), std::to_string(maxRemoveTime.count()), std::to_string(pairingRemoveTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
             std::cout << "MaxHeap completed in " + maxRemoveTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingRemoveTime.count() << " nanoseconds\n" << std::endl;
@@ -352,6 +364,7 @@ void Benchmark::removeTasks(long int number) {
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
             }
+            CSVData.emplace_back(std::vector<std::string>({"remove", std::to_string(number), std::to_string(timerOn), std::to_string(maxRemoveTime.count()), std::to_string(pairingRemoveTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
             std::cout << "MaxHeap completed in " + maxRemoveTime.count() << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + pairingRemoveTime.count() << " nanoseconds\n" << std::endl;
@@ -363,6 +376,7 @@ void Benchmark::resetTime() {
     std::cout << "Resetting time...\n";
     maxHeapTime = std::chrono::nanoseconds::zero();
     pairHeapTime = std::chrono::nanoseconds::zero();
+    CSVData.emplace_back(std::vector<std::string>({"timer reset", "1", std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
 }
 
 void Benchmark::resetDataset() {
@@ -373,11 +387,70 @@ void Benchmark::resetDataset() {
     pairingHeap.clear();
     counter = 0;
     IDCounter = 0;
-    maxHeapTime = 0;
-    pairHeapTime = 0;
+    maxHeapTime = std::chrono::nanoseconds::zero();
+    pairHeapTime = std::chrono::nanoseconds::zero();
+    CSVData = {{"Operation", "Quantity", "Timer", "MaxHeap Time Taken", "Pairing Heap Time Taken", "MaxHeap Timer Sum", "Pairing Heap Timer Sum"}};
     std::string verbosityString = verbosity ? "True" : "False";
     std::string timerString = timerOn ? "On" : "Off";
     std::cout << "Creating new dataset with the selected options:\nMax Size: " + std::to_string(getSize()) + "\nType: " + getType() + "\nVerbosity: " + verbosityString + "\nTimer: " + timerString + "\nDataset created.\n" << std::endl;
+}
+
+void Benchmark::writeCSV() {
+    CSVData.emplace_back(std::vector<std::string>({"end", "1", std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+    std::cout << "Creating CSV file...\n";
+    auto timeNow = std::time(nullptr);
+    auto timeLocal = *std::localtime(&timeNow);
+    std::ostringstream timeStream;
+    timeStream << std::put_time(&timeLocal, "%Y-%m-%d %H:%M:%S");
+    std::string timeString = timeStream.str();
+    std::ofstream outFile("log-" + timeString + ".csv");
+    if (!outFile.is_open()) {
+        std::cout << "Failed to open CSV file for writing. Ensure write permissions are available for this directory.\n" << std::endl;
+        return;
+    }
+    std::cout << "Writing CSV file...\n";
+    for (const auto& line : CSVData) {
+        for (int i = 0; i < line.size(); ++i) {
+            outFile << line[i];
+            if (i != line.size() - 1) {
+                outFile << ",";
+            }
+        }
+        outFile << "\n";
+    }
+    outFile.close();
+    std::cout << "CSV file successfully written at log-" + timeString + ".csv\n" << std::endl;
+}
+
+void Benchmark::setSize(long int size) {
+    datasetMaxSize = size;
+    CSVData.emplace_back(std::vector<std::string>({"dataset resize", std::to_string(size), std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+}
+
+void Benchmark::setType(int type) {
+    datasetType = type;
+    CSVData.emplace_back(std::vector<std::string>({"dataset type", std::to_string(type), std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+}
+
+void Benchmark::setVerbosity(bool verbose) {
+    verbosity = verbose;
+    CSVData.emplace_back(std::vector<std::string>({"verbosity", std::to_string(verbose), std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+}
+
+void Benchmark::setTimer(bool timer) {
+    timerOn = timer;
+    CSVData.emplace_back(std::vector<std::string>({"timer set", std::to_string(timer), std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+}
+
+void Benchmark::setMinPriority(long int priority) {
+    minPriority = priority;
+    CSVData.emplace_back(std::vector<std::string>({"min priority set", std::to_string(priority), std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+}
+
+void Benchmark::setMaxPriority(long int priority) {
+    maxPriority = priority;
+    CSVData.emplace_back(std::vector<std::string>({"max priority set", std::to_string(priority), std::to_string(timerOn), "0", "0", std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
+
 }
 
 std::string Benchmark::getType() {
