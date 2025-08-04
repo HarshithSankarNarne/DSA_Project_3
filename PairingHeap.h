@@ -207,7 +207,14 @@ public:
         return root->task;
     }
 
-    void clear(Node* node)
+
+    void clear()
+    {
+        deleteHeap(root);
+        root = nullptr;
+    }
+
+    void deleteEntireHeap(Node* node)
     {
         if (node == nullptr)
         {
