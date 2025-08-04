@@ -192,7 +192,7 @@ int main()
                 std::cout << optionsMenu << endl;
                 seenMenu = true;
             }
-            int choice = getInput(0, 4);
+            int choice = getInput(0, 5);
             if (choice == 1) {          // adjust dataset size
                 std::cout << "Adjust the maximum dataset size to a value between 0 and " + std::to_string(benchmark.getMaxMaxDatasetSize()) + ". Cannot be lower than the current number of tasks.\nCurrent tasks: " + std::to_string(benchmark.getDataSize()) + "\nCurrent max capacity: " + std::to_string(benchmark.getSize()) + "\n" << std::endl;
                 benchmark.setSize(getInput(benchmark.getDataSize(), benchmark.getMaxMaxDatasetSize()));
