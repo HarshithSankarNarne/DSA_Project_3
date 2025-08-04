@@ -3,6 +3,8 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include <sstream>
+
 
 long int Benchmark::getNumber(std::string& info, long int low, long int high) {
     std::string input;
