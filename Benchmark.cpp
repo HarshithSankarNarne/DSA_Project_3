@@ -101,7 +101,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count())<< " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer on, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -123,7 +123,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
     }
     else {
@@ -151,7 +151,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer off, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -171,7 +171,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
     }
 }
@@ -212,7 +212,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer on, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -234,7 +234,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
     }
     else {
@@ -262,7 +262,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer off, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -282,7 +282,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxInsertTime, pairingInsertTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
     }
 }
@@ -317,7 +317,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxRemoveTime, pairingRemoveTime);
         }
         else {                      // timer on, non-verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
@@ -343,7 +343,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxRemoveTime, pairingRemoveTime);
         }
     }
     else {
@@ -373,7 +373,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxRemoveTime, pairingRemoveTime);
         }
         else {                      // timer off, non-verbose
             std::chrono::duration<unsigned long long, std::nano> maxRemoveTime(0);
@@ -397,7 +397,7 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks removed.\n";
             std::cout << "MaxHeap completed in " + to_string(maxRemoveTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
-            return std::pair<auto, auto>(maxRemoveTime, pairingRemoveTime);
+            return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxRemoveTime, pairingRemoveTime);
         }
     }
 }
