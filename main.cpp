@@ -63,19 +63,19 @@ int main()
                     auto maxPostRemoveTime = outPair.first;
                     auto pairingPostRemoveTime = outPair.second;
                     std::string timerValue = benchmark.getTimer() ? "Timer ON" : "Timer OFF";
-                    cout << "_____________________________________________________________________________________" << endl;
-                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:        insertion " + std::to_string(maxPostInsertTime.count()) + " ns | deletion " + std::to_string(maxPostRemoveTime.count()) + " ns | sum " + std::to_string(maxPostInsertTime.count() + maxPostRemoveTime.count()) + " ns\nPairing Heap:   insertion " + std::to_string(pairingPostInsertTime.count()) + " ns | deletion " + std::to_string(pairingPostRemoveTime.count()) + " ns | sum " + std::to_string(pairingPostInsertTime.count() + pairingPostRemoveTime.count()) + " ns\n" << std::endl;
+                    cout << "_____________________________________________________________________________________\n";
+                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:        insertion " + std::to_string(maxPostInsertTime.count()) + " ns | deletion " + std::to_string(maxPostRemoveTime.count()) + " ns | sum " + std::to_string(maxPostInsertTime.count() + maxPostRemoveTime.count()) + " ns\nPairing Heap:   insertion " + std::to_string(pairingPostInsertTime.count()) + " ns | deletion " + std::to_string(pairingPostRemoveTime.count()) + " ns | sum " + std::to_string(pairingPostInsertTime.count() + pairingPostRemoveTime.count()) + " ns\n";
                     if ((maxPostInsertTime + maxPostRemoveTime)>(pairingPostInsertTime + pairingPostRemoveTime)) {
                         auto timeDiff = (maxPostInsertTime + maxPostRemoveTime) - (pairingPostInsertTime+pairingPostRemoveTime);
                         int timeDifference = static_cast<int>(timeDiff.count());
-                        cout <<"Pairing heap was faster by " << timeDifference << " nanoseconds." << endl;
+                        cout <<"Pairing heap was faster by " << timeDifference << " nanoseconds.\n";
                     }
                     if ((maxPostInsertTime + maxPostRemoveTime)<(pairingPostInsertTime + pairingPostRemoveTime)) {
                         auto timeDiff = (pairingPostInsertTime+pairingPostRemoveTime) - (maxPostInsertTime + maxPostRemoveTime);
                         int timeDifference = static_cast<int>(timeDiff.count());
-                        cout <<"Max heap was faster by " << timeDifference << " nanoseconds." << endl;
+                        cout <<"Max heap was faster by " << timeDifference << " nanoseconds.\n";
                     }
-                    cout << "_____________________________________________________________________________________" << endl;
+                    cout << "_____________________________________________________________________________________\n" << endl;
 
                     seenMenu = false;
                 }
