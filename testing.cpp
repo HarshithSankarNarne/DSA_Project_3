@@ -55,9 +55,6 @@ void PairingMergeTester() {
     merged.assignroot(mergedroot);
 
 
-
-
-
     while (merged.getroot() != nullptr)
     {
         Task extract = merged.extractMax();
