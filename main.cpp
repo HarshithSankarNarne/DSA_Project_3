@@ -65,7 +65,7 @@ int main()
                     unsigned long long maxPostRemoveTime = benchmark.getMaxHeapTime();
                     unsigned long long pairingPostRemoveTime = benchmark.getPairHeapTime();
                     std::string timerValue = benchmark.getTimer() ? "Timer ON" : "Timer OFF";
-                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap: insertion " + std::to_string(maxPostInsertTime - maxStartTime) + " ns, deletion " + std::to_string(maxPostRemoveTime - maxPostInsertTime) + " ns, sum " + std::to_string(maxPostRemoveTime - maxStartTime) + "\nPairing Heap: insertion " + std::to_string(pairingPostInsertTime - pairingStartTime) + " ns, deletion " + std::to_string(pairingPostRemoveTime - pairingPostInsertTime) + " ns, sum " + std::to_string(pairingPostRemoveTime - pairingStartTime) + "\n" << std::endl;
+                    std::cout << "Summary:\n" + timerValue + "\nMaxHeap:\t\tinsertion " + std::to_string(maxPostInsertTime - maxStartTime) + " ns, deletion " + std::to_string(maxPostRemoveTime - maxPostInsertTime) + " ns, sum " + std::to_string(maxPostRemoveTime - maxStartTime) + "\nPairing Heap:\tinsertion " + std::to_string(pairingPostInsertTime - pairingStartTime) + " ns, deletion " + std::to_string(pairingPostRemoveTime - pairingPostInsertTime) + " ns, sum " + std::to_string(pairingPostRemoveTime - pairingStartTime) + "\n" << std::endl;
                 }
             }
             else if (choice == 2) {     // start/stop timer
