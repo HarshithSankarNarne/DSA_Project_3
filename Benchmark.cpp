@@ -103,6 +103,16 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count())<< " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            if (getMaxHeapTime() > getPairHeapTime())
+            {
+                cout << "Max Heap performed better than Pairing Heap" << endl;
+            } else if (getMaxHeapTime() < getPairHeapTime())
+            {
+                cout << "Pairing Heap performed better than Max Heap" << endl;
+            } else if (getMaxHeapTime() == getPairHeapTime())
+            {
+                cout << "Both heaps executed at the same time " << endl;
+            }
             return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer on, non-verbose
@@ -214,6 +224,16 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
+            if (getMaxHeapTime() > getPairHeapTime())
+            {
+                cout << "Max Heap performed better than Pairing Heap" << endl;
+            } else if (getMaxHeapTime() < getPairHeapTime())
+            {
+                cout << "Pairing Heap performed better than Max Heap" << endl;
+            } else if (getMaxHeapTime() == getPairHeapTime())
+            {
+                cout << "Both heaps executed at the same time " << endl;
+            }
             return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
         }
         else {                      // timer on, non-verbose
