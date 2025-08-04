@@ -9,8 +9,8 @@
 
 #include <string>
 #include <vector>
-
-#include <Task.h>
+#include <iostream>
+#include "Task.h"
 
 
 
@@ -160,7 +160,7 @@ public:
         else if (list.size() % 2 == 0)
         {
             //Left to right
-            for (int i = 0; i < list.size(); i+= 2)
+            for (unsigned long long i = 0; i < list.size(); i+= 2)
             {
 
                 merged.push_back(merge(list[i], list[i+1]));
@@ -174,7 +174,7 @@ public:
             }
         } else //if (list.size() % 2 != 0)
         {
-            for (int i = 0; i < list.size() - 1; i+= 2)
+            for (unsigned long long i = 0; i < list.size() - 1; i+= 2)
             {
                 merged.push_back(merge(list[i], list[i+1]));
             }
@@ -210,7 +210,7 @@ public:
 
     void clear()
     {
-        deleteHeap(root);
+        deleteEntireHeap(root);
         root = nullptr;
     }
 
@@ -220,8 +220,8 @@ public:
         {
             return;
         }
-        clear(node->left);
-        clear(node->sibling);
+        deleteEntireHeap(node->left);
+        deleteEntireHeap(node->sibling);
         delete node;
     }
 
@@ -229,7 +229,7 @@ public:
 
     ~PairingHeap()
     {
-        deleteHeap(root);
+        deleteEntireHeap(root);
     }
 
 
