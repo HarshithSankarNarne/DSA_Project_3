@@ -119,7 +119,7 @@ void Benchmark::generateTasks(long int number) {
             CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count()) << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
     }
     else {
@@ -144,8 +144,8 @@ void Benchmark::generateTasks(long int number) {
             std::cout << std::endl;
             CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
         else {                      // timer off, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -162,8 +162,8 @@ void Benchmark::generateTasks(long int number) {
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
             CSVData.emplace_back(std::vector<std::string>({"add auto", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
     }
 }
@@ -201,8 +201,8 @@ void Benchmark::generateTasksManual(long int number) {
             std::cout << std::endl;
             CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
         else {                      // timer on, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -221,8 +221,8 @@ void Benchmark::generateTasksManual(long int number) {
             pairHeapTime += pairingInsertTime;
             CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer ON\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
     }
     else {
@@ -247,8 +247,8 @@ void Benchmark::generateTasksManual(long int number) {
             std::cout << std::endl;
             CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
         else {                      // timer off, non-verbose
             auto maxStartTime = std::chrono::high_resolution_clock::now();
@@ -265,8 +265,8 @@ void Benchmark::generateTasksManual(long int number) {
             std::chrono::duration<unsigned long long, std::nano> pairingInsertTime = pairingEndTime - pairingStartTime;
             CSVData.emplace_back(std::vector<std::string>({"add manual", std::to_string(number), std::to_string(timerOn), std::to_string(maxInsertTime.count()), std::to_string(pairingInsertTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
-            std::cout << "MaxHeap completed in " + maxInsertTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingInsertTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxInsertTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
         }
     }
 }
@@ -368,8 +368,8 @@ void Benchmark::removeTasks(long int number) {
             }
             CSVData.emplace_back(std::vector<std::string>({"remove", std::to_string(number), std::to_string(timerOn), std::to_string(maxRemoveTime.count()), std::to_string(pairingRemoveTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";
-            std::cout << "MaxHeap completed in " + maxRemoveTime.count() << " nanoseconds\n";
-            std::cout << "Pairing Heap completed in " + pairingRemoveTime.count() << " nanoseconds\n" << std::endl;
+            std::cout << "MaxHeap completed in " + to_string(maxRemoveTime.count()) << " nanoseconds\n";
+            std::cout << "Pairing Heap completed in " + to_string(pairingRemoveTime.count()) << " nanoseconds\n" << std::endl;
         }
     }
 }
