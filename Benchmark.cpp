@@ -298,6 +298,7 @@ void Benchmark::removeTasks(long int number) {
                 Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
+                counter--;
                 std::cout << "| " << std::right << std::setw(10) << extracted.ID << " | " << std::right << std::setw(10) << extracted.priority << " | " << std::left << std::setw(50) << extracted.name << " |\n";
             }
             std::cout << std::endl;
@@ -324,6 +325,7 @@ void Benchmark::removeTasks(long int number) {
                 Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
+                counter--;
             }
             maxHeapTime += maxRemoveTime;
             pairHeapTime += pairingRemoveTime;
@@ -352,6 +354,7 @@ void Benchmark::removeTasks(long int number) {
                 Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
+                counter--;
                 std::cout << "| " << std::right << std::setw(10) << extracted.ID << " | " << std::right << std::setw(10) << extracted.priority << " | " << std::left << std::setw(50) << extracted.name << " |\n";
             }
             std::cout << std::endl;
@@ -376,6 +379,7 @@ void Benchmark::removeTasks(long int number) {
                 Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
+                counter--;
             }
             CSVData.emplace_back(std::vector<std::string>({"remove", std::to_string(number), std::to_string(timerOn), std::to_string(maxRemoveTime.count()), std::to_string(pairingRemoveTime.count()), std::to_string(maxHeapTime.count()), std::to_string(pairHeapTime.count())}));
             std::cout << "Timer OFF\n";

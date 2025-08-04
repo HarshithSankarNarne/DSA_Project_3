@@ -60,7 +60,7 @@ public:
     long int getMaxMaxPriority() const { return MAX_MAX_PRIORITY; }
     long int getMinStringLength() const { return MIN_STRING_LENGTH; }
     long int getMaxStringLength() const { return MAX_STRING_LENGTH; }
-    long int getDataSize() { return static_cast<long int>(dataset.size()); }
+    long int getDataSize() { return counter; }
     long int getMaxMaxDatasetSize() const { return MAX_MAX_DATASET_SIZE; }
     void printCurrentTime();
 };
