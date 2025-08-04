@@ -33,13 +33,6 @@ private:
 
 
 public:
-    void printNode(Node* node, int level = 0) {
-        if (node == nullptr) return;
-        for (int i = 0; i < level; ++i) std::cout << "  ";
-        std::cout << "ID: " << node->task.ID << ", Prio: " << node->task.priority << "\n";
-        printNode(node->left, level + 1);
-        printNode(node->sibling, level);
-    }
 
     void insert(int ID, int priority, std::string name)
     {
