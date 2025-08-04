@@ -361,8 +361,8 @@ void Benchmark::removeTasks(long int number) {
 
 void Benchmark::resetTime() {
     std::cout << "Resetting time...\n";
-    maxHeapTime = 0;
-    pairHeapTime = 0;
+    maxHeapTime = std::chrono::nanoseconds::zero();
+    pairHeapTime = std::chrono::nanoseconds::zero();
 }
 
 void Benchmark::resetDataset() {

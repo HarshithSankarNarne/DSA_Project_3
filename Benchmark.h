@@ -11,8 +11,8 @@
 class Benchmark {
     std::unordered_map<long int, Task> dataset;
     std::vector<long int> deletedTasks;
-    PairingHeap pairingHeap;
     MaxHeap maxHeap;
+    PairingHeap pairingHeap;
     long int counter = 0;
     long int IDCounter = 0;
     // default values for data generation
