@@ -81,7 +81,7 @@ void Benchmark::generateTasks(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -107,7 +107,7 @@ void Benchmark::generateTasks(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -129,7 +129,7 @@ void Benchmark::generateTasks(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -153,7 +153,7 @@ void Benchmark::generateTasks(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -184,7 +184,7 @@ void Benchmark::generateTasksManual(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -210,7 +210,7 @@ void Benchmark::generateTasksManual(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -232,7 +232,7 @@ void Benchmark::generateTasksManual(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -256,7 +256,7 @@ void Benchmark::generateTasksManual(long int number) {
             auto maxEndTime = std::chrono::high_resolution_clock::now();
             auto pairingStartTime = std::chrono::high_resolution_clock::now();
             for (long int i = IDCounter - number; i < IDCounter; i++) {
-                pairingHeap.insert(dataset[i]);
+                pairingHeap.insert(dataset[i].ID, dataset[i].priority, dataset[i].name);
             }
             auto pairingEndTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<unsigned long long, std::nano> maxInsertTime = maxEndTime - maxStartTime;
@@ -279,13 +279,13 @@ void Benchmark::removeTasks(long int number) {
             for (long int i = 0; i < number; i++) {
                 deletedTasks.push_back(maxHeap.peek().ID);
                 auto maxStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = maxHeap.extract();
+                Task extracted = maxHeap.extractMax();
                 auto maxEndTime = std::chrono::high_resolution_clock::now();
                 maxRemoveTime += maxEndTime - maxStartTime;
             }
             for (long int i = 0; i < number; i++) {
                 auto pairingStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = pairingHeap.extract();
+                Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
                 std::cout << "| " << std::right << std::setw(10) << extracted.ID << " | " << std::right << std::setw(10) << extracted.priority << " | " << std::left << std::setw(50) << extracted.name << " |\n";
@@ -304,13 +304,13 @@ void Benchmark::removeTasks(long int number) {
             for (long int i = 0; i < number; i++) {
                 deletedTasks.push_back(maxHeap.peek().ID);
                 auto maxStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = maxHeap.extract();
+                Task extracted = maxHeap.extractMax();
                 auto maxEndTime = std::chrono::high_resolution_clock::now();
                 maxRemoveTime += maxEndTime - maxStartTime;
             }
             for (long int i = 0; i < number; i++) {
                 auto pairingStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = pairingHeap.extract();
+                Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
             }
@@ -331,13 +331,13 @@ void Benchmark::removeTasks(long int number) {
             for (long int i = 0; i < number; i++) {
                 deletedTasks.push_back(maxHeap.peek().ID);
                 auto maxStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = maxHeap.extract();
+                Task extracted = maxHeap.extractMax();
                 auto maxEndTime = std::chrono::high_resolution_clock::now();
                 maxRemoveTime += maxEndTime - maxStartTime;
             }
             for (long int i = 0; i < number; i++) {
                 auto pairingStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = pairingHeap.extract();
+                Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
                 std::cout << "| " << std::right << std::setw(10) << extracted.ID << " | " << std::right << std::setw(10) << extracted.priority << " | " << std::left << std::setw(50) << extracted.name << " |\n";
@@ -354,13 +354,13 @@ void Benchmark::removeTasks(long int number) {
             for (long int i = 0; i < number; i++) {
                 deletedTasks.push_back(maxHeap.peek().ID);
                 auto maxStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = maxHeap.extract();
+                Task extracted = maxHeap.extractMax();
                 auto maxEndTime = std::chrono::high_resolution_clock::now();
                 maxRemoveTime += maxEndTime - maxStartTime;
             }
             for (long int i = 0; i < number; i++) {
                 auto pairingStartTime = std::chrono::high_resolution_clock::now();
-                Task extracted = pairingHeap.extract();
+                Task extracted = pairingHeap.extractMax();
                 auto pairingEndTime = std::chrono::high_resolution_clock::now();
                 pairingRemoveTime += pairingEndTime - pairingStartTime;
             }
