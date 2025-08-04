@@ -103,14 +103,13 @@ std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::dura
             std::cout << std::to_string(number) + " tasks added.\n";
             std::cout << "MaxHeap completed in " + std::to_string(maxInsertTime.count())<< " nanoseconds\n";
             std::cout << "Pairing Heap completed in " + std::to_string(pairingInsertTime.count()) << " nanoseconds\n" << std::endl;
-            if (getMaxHeapTime() > getPairHeapTime())
-            {
+            if (getMaxHeapTime() > getPairHeapTime()) {
                 cout << "Max Heap performed better than Pairing Heap up to now\n";
-            } else if (getMaxHeapTime() < getPairHeapTime())
-            {
+            }
+            else if (getMaxHeapTime() < getPairHeapTime()) {
                 cout << "Pairing Heap performed better than Max Heap up to now\n";
-            } else if (getMaxHeapTime() == getPairHeapTime())
-            {
+            }
+            else if (getMaxHeapTime() == getPairHeapTime()) {
                 cout << "Both heaps executed at the same time up to now\n" << endl;
             }
             return std::pair<std::chrono::duration<unsigned long long, std::nano>,std::chrono::duration<unsigned long long, std::nano>>(maxInsertTime, pairingInsertTime);
@@ -582,10 +581,10 @@ std::string Benchmark::getType() {
 
 void Benchmark::printCurrentTime() {
     std::cout << "Current time:\nMaxHeap completed in " + std::to_string(getMaxHeapTime()) + " nanoseconds.\nPairing Heap completed in " + std::to_string(getPairHeapTime()) + " nanoseconds.\n";
-    if (getMaxHeapTime() > getPairHeapTime()) {
+    if (getMaxHeapTime() < getPairHeapTime()) {
         cout << "Max Heap performed better than Pairing Heap up to now\n";
     }
-    else if (getMaxHeapTime() < getPairHeapTime()) {
+    else if (getMaxHeapTime() > getPairHeapTime()) {
         cout << "Pairing Heap performed better than Max Heap up to now\n";
     }
     else if (getMaxHeapTime() == getPairHeapTime()) {
