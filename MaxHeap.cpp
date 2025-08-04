@@ -1,5 +1,6 @@
 #include "MaxHeap.h"
 #include <vector>
+#include "Task.h"
 using namespace std;
 
 void MaxHeap::insert(Task task) {
@@ -13,7 +14,7 @@ void MaxHeap::insert(Task task) {
 };
 
 void MaxHeap::heapifyUp(vector<Task>::size_type taskIndex) {
-    vector<Task>::size_type<> parentIndex = (taskIndex-1)/2;
+    vector<Task>::size_type parentIndex = (taskIndex-1)/2;
     if(taskIndex ==0 || heap[parentIndex].priority >= heap[taskIndex].priority) {
         return;
     }
