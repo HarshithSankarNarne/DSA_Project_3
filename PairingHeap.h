@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 
+#include <Task.h>
 
 
 
@@ -18,14 +19,6 @@ struct Node
     Task task;
     Node* left;
     Node* sibling;
-
-    /*
-    Node(int ID, int priority, string name)
-    {
-        this->task = Task(ID, priority, name);
-        this->left = nullptr;
-        this->sibling = nullptr;
-    }*/
     Node(int ID, int priority, std::string name) : task(ID, priority, std::move(name)), left(nullptr), sibling(nullptr) {}
 
 };
@@ -58,7 +51,6 @@ public:
         {
             root = merge(root, newNode);
         }
-
     }
 
     Node* merge(Node* one, Node* two)
@@ -215,14 +207,14 @@ public:
         return root->task;
     }
 
-    void deleteHeap(Node* node)
+    void clear(Node* node)
     {
         if (node == nullptr)
         {
             return;
         }
-        deleteHeap(node->left);
-        deleteHeap(node->sibling);
+        clear(node->left);
+        clear(node->sibling);
         delete node;
     }
 
