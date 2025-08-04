@@ -30,6 +30,9 @@ class PairingHeap {
     //Merge is complicated and needs to be implemented correctly
 private:
     Node* root = nullptr;
+    void insertHelper(int ID, int priority, std::string name);
+    void mergeHelper(Node* one, Node* two);
+
 
 
 public:
@@ -41,14 +44,7 @@ public:
 
     void insert(int ID, int priority, std::string name)
     {
-        Node* newNode = new Node(ID, priority, name);
-        if (root == nullptr)
-        {
-            root = newNode;
-        } else
-        {
-            root = merge(root, newNode);
-        }
+        insertHelper(ID, priority, name);
     }
 
     Node* merge(Node* one, Node* two)
