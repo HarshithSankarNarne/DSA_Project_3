@@ -8,4 +8,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 add_executable(Project_3 main.cpp
         Benchmark.cpp
         Benchmark.h
-        Task.h)
+        Task.h
+        MaxHeap.h
+        MaxHeap.cpp
+        PairingHeap.h
+        PairingHeap.cpp)

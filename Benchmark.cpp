@@ -39,7 +39,7 @@ std::string Benchmark::getString(std::string& info, long int low, long int high)
         std::cout << info;
         getline(std::cin, input);
         std::cout << "\n" << std::endl;
-        if (low <= output.length() && output.length() <= high) {
+        if (low <= static_cast<long int>(output.length()) && static_cast<long int>(output.length()) <= high) {
             validInput = true;
         }
         else {
@@ -412,7 +412,7 @@ void Benchmark::writeCSV() {
     }
     std::cout << "Writing CSV file...\n";
     for (const auto& line : CSVData) {
-        for (int i = 0; i < line.size(); ++i) {
+        for (unsigned long long i = 0; i < line.size(); ++i) {
             outFile << line[i];
             if (i != line.size() - 1) {
                 outFile << ",";
