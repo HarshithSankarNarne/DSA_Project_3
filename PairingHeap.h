@@ -7,6 +7,29 @@
 
 
 
+#include <string>
+#include <vector>
+
+
+
+
+struct Node
+{
+    Task task;
+    Node* left;
+    Node* sibling;
+
+    /*
+    Node(int ID, int priority, string name)
+    {
+        this->task = Task(ID, priority, name);
+        this->left = nullptr;
+        this->sibling = nullptr;
+    }*/
+    Node(int ID, int priority, std::string name) : task(ID, priority, std::move(name)), left(nullptr), sibling(nullptr) {}
+
+};
+
 class PairingHeap {
 //More complicated
     //insert, extract, search
@@ -15,14 +38,25 @@ class PairingHeap {
 private:
     Node* root = nullptr;
 
-    void insert(Node* node, int ID, int priority, string name)
+
+public:
+    void printNode(Node* node, int level = 0) {
+        if (node == nullptr) return;
+        for (int i = 0; i < level; ++i) std::cout << "  ";
+        std::cout << "ID: " << node->task.ID << ", Prio: " << node->task.priority << "\n";
+        printNode(node->left, level + 1);
+        printNode(node->sibling, level);
+    }
+
+    void insert(int ID, int priority, std::string name)
     {
+        Node* newNode = new Node(ID, priority, name);
         if (root == nullptr)
         {
-            root = new Node(ID, priority, name);
+            root = newNode;
         } else
         {
-            merge(root, node);
+            root = merge(root, newNode);
         }
 
     }
@@ -37,6 +71,8 @@ private:
         {
             return one;
         }
+
+
         //Compare the priority of the two nodes
         if (one->task.priority > two->task.priority)
         {
@@ -49,7 +85,6 @@ private:
             {
                 Node* temp = parent->left;
                 parent->left = two;
-                two->sibling = nullptr;
                 two->sibling = temp;
             }
 
@@ -58,26 +93,25 @@ private:
             parent = two;
             if (parent->left == nullptr)
             {
-                parent->left = one;
                 one->sibling = nullptr;
+                parent->left = one;
             } else
             {
                 Node* temp = parent->left;
-                one->sibling = nullptr;
                 parent->left = one;
                 one->sibling = temp;
             }
-        } else if (one->task.priority == two->task.priority)
+        } else
         {
             parent = one;
             if (parent->left == nullptr)
             {
                 parent->left = two;
                 two->sibling = nullptr;
+
             } else
             {
                 Node* temp = parent->left;
-                two->sibling = nullptr;
                 parent->left = two;
                 two->sibling = temp;
             }
@@ -86,73 +120,124 @@ private:
     }
 
 
-    Node* extractMax()
+    Task extractMax()
     {
-        //Remove the root
-        //Store all of its children
-        //Merge the children use two pass method
-        //Left to right then right to left
+
+        if (root == nullptr)
+        {
+            //cout << "Empty Heap" << endl;
+            return Task(0,0,"");
+        }
+
         Node* max = root;
 
-        Node* lefty = root;
+        std::vector<Node*> list;
 
-        vector<Node*> list;
 
-        if (lefty->left != nullptr)
+        max->sibling = nullptr;
+
+        Node* child = nullptr;
+
+        if (root->left != nullptr)
         {
-            lefty = lefty->left;
-            list.push_back(lefty);
+            child = root->left;
         }
 
-        Node* temp = lefty;
-
-        while (temp->sibling != nullptr)
+        while (child != nullptr)
         {
-            list.push_back(temp->sibling);
-
-            temp = temp->sibling;
+            Node* sibly = child->sibling;
+            child->sibling = nullptr;
+            list.push_back(child);
+            child = sibly;
         }
 
-        vector<Node*> merged;
 
-        if (list.size() % 2 == 0)
+        std::vector<Node*> merged;
+
+        Node* last = nullptr;
+
+
+        if (list.size() == 0)
+        {
+            last = nullptr;
+        }
+        else if (list.size() == 1)
+        {
+            last = list[0];
+        }
+        else if (list.size() % 2 == 0)
         {
             //Left to right
             for (int i = 0; i < list.size(); i+= 2)
             {
+
                 merged.push_back(merge(list[i], list[i+1]));
             }
             //Right to left
             int size = merged.size() - 1;
-            Node* last = list[size];
-            for (int j = size; j > 0; j--)
+            last = merged.back();
+            for (int j = size - 1; j >= 0; j--)
             {
-                last = merge(merged[j-1], last);
+                last = merge(merged[j], last);
             }
-        } else if (list.size() % 2 != 0)
+        } else //if (list.size() % 2 != 0)
         {
             for (int i = 0; i < list.size() - 1; i+= 2)
             {
                 merged.push_back(merge(list[i], list[i+1]));
             }
+            merged.push_back(list.back());
             int size = merged.size() - 1;
-            Node* last = list[size];
-            for (int j = size - 2; j >= 0; j--)
+            last = merged.back();
+            for (int j = size - 1; j >= 0; j--)
             {
-                last = merge(merged[j-1], last);
+                last = merge(merged[j], last);
             }
         }
 
+
+
+
+
+        Task maxExtract = max->task;
         root = last;
-        return max;
         delete max;
+        return maxExtract;
+    }
+
+
+    Task peek()
+    {
+        if (root == nullptr)
+        {
+            return Task(0,0, "");
+        }
+        return root->task;
+    }
+
+    void deleteHeap(Node* node)
+    {
+        if (node == nullptr)
+        {
+            return;
+        }
+        deleteHeap(node->left);
+        deleteHeap(node->sibling);
+        delete node;
     }
 
 
 
+    ~PairingHeap()
+    {
+        deleteHeap(root);
+    }
 
 
-
+    Node* getroot()
+    {
+        return root;
+    }
 
 
 };
