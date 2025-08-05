@@ -39,8 +39,9 @@ std::string Benchmark::getString(std::string& info, long int low, long int high)
         std::cout << info;
         getline(std::cin, input);
         std::cout << "\n" << std::endl;
-        if (low <= static_cast<long int>(output.length()) && static_cast<long int>(output.length()) <= high) {
+        if (low <= static_cast<long int>(input.length()) && static_cast<long int>(input.length()) <= high) {
             validInput = true;
+            output = input;
         }
         else {
             std::cout << "Please enter a string consisting of between " + std::to_string(low) + " and " + std::to_string(high) + " characters.\n" << std::endl;
