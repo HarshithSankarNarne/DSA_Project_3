@@ -67,12 +67,12 @@ int main()
                     std::cout << "Summary:\n" + timerValue + "\nMaxHeap:        insertion " + std::to_string(maxPostInsertTime.count()) + " ns | deletion " + std::to_string(maxPostRemoveTime.count()) + " ns | sum " + std::to_string(maxPostInsertTime.count() + maxPostRemoveTime.count()) + " ns\nPairing Heap:   insertion " + std::to_string(pairingPostInsertTime.count()) + " ns | deletion " + std::to_string(pairingPostRemoveTime.count()) + " ns | sum " + std::to_string(pairingPostInsertTime.count() + pairingPostRemoveTime.count()) + " ns\n";
                     if ((maxPostInsertTime + maxPostRemoveTime)>(pairingPostInsertTime + pairingPostRemoveTime)) {
                         auto timeDiff = (maxPostInsertTime + maxPostRemoveTime) - (pairingPostInsertTime+pairingPostRemoveTime);
-                        int timeDifference = static_cast<int>(timeDiff.count());
+                        unsigned long long timeDifference = timeDiff.count();
                         cout <<"Pairing heap was faster by " << timeDifference << " nanoseconds.\n";
                     }
                     if ((maxPostInsertTime + maxPostRemoveTime)<(pairingPostInsertTime + pairingPostRemoveTime)) {
                         auto timeDiff = (pairingPostInsertTime+pairingPostRemoveTime) - (maxPostInsertTime + maxPostRemoveTime);
-                        int timeDifference = static_cast<int>(timeDiff.count());
+                        unsigned long long timeDifference = timeDiff.count();
                         cout <<"Max heap was faster by " << timeDifference << " nanoseconds.\n";
                     }
                     cout << "_____________________________________________________________________________________\n" << endl;
