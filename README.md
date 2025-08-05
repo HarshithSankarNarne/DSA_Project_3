@@ -9,3 +9,4 @@ Readme
 8. To save data to a CSV file, select 4 in the simulation menu.
 
 
+FYI: For testing.cpp, it was implemented to make sure the pairing heap was working properly.  You can ignore it completely. To make it work you need to comment out the int main in the testing.cpp and create a seperate configuration that only runs the testing.cpp. The testing.cpp plays not role in the actual project but was created by Harshith as he was developing the pairing heap and need a place to debug and test functionality simimlar to test.cpp in Project 1 and 2.
